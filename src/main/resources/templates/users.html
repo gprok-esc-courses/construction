@@ -6,12 +6,16 @@
 </head>
 <body>
 
-<section>
-    <h1>All Open Tasks</h1>
 
-    <div th:each="task : ${tasks}">
-        <p th:text="${task.getContent() + ' (' + task.getUser().getUsername() + ')'}"></p>
+<section>
+    <h1>Manage Users</h1>
+
+    <div>
+        <div th:each="user : ${users}">
+            <span th:text="${user.getUsername()}"></span> Role:<span th:text="${user.getRole()}"></span>
+        </div>
     </div>
 </section>
+
 </body>
 </html>

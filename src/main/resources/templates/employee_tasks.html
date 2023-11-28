@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<section>
   <h1>Employee Tasks</h1>
 
-  <div th:each="task : ${tasks}">
-    <p th:text="${task.getContent()}"></p>
-  </div>
+    <form method="post" th:action="@{/employee/add/task}" th:object="${taskDto}">
+        <label>New Task:</label> <input type="text" th:field="*{content}" /> <button type="submit">Add</button>
+    </form>
+
+    <div class="pt-5">
+      <div th:each="task : ${tasks}">
+        <a th:text="X" th:href="@{/employee/complete/task/{task_id}(task_id=${task.getId()})}"></a> <span th:text="${task.getContent()}">User Task</span>
+      </div>
+    </div>
+</section>
 
 </body>
 </html>
