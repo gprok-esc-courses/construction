@@ -9,9 +9,22 @@
 <section>
     <h1>All Open Tasks</h1>
 
-    <div th:each="task : ${tasks}">
-        <p th:text="${task.getContent() + ' (' + task.getUser().getUsername() + ')'}"></p>
-    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task</th>
+            <th scope="col">User</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <th scope="row" th:text="${task.getId()}">1</th>
+            <td th:text="${task.getContent()}">Task Content</td>
+            <td th:text="${task.getUser().getUsername()}">User</td>
+        </tr>
+        </tbody>
+    </table>
 </section>
 </body>
 </html>
